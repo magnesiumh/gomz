@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+ {% extends "base.html" %}
+
+ {% block title %}All Events{% endblock title %}
+
+{% block sidenav %}
+ {% for page in page_list %}
+ <li><a href="{{ page.permalink }}">{{ page.title }}</a></li>
+ {% endfor %}
+ {% endblock sidenav %}
+
+{% block content %}
+ <h1>All Events</h1>
+
+ <table style="border-collapse:collapse">
+
+ {% for event in all_events %}
+ <tr class="eventrow {% cycle '' 'altrow' %}">
+  <td><a href="show/{{event.id}}">{{ event.id }}</a></td>
+ <td>{{ event.id }}</td>
+ <td>{{ event.Event_Name }}</td>
+ <td>{{ event.Venue }}</td>
+ <td>{{ event.Date_of_event|date:"m-d-y" }}</td>
+
+
+ </tr>
+ {% endfor %}
+ </table>
+ {% endblock content %}
+
